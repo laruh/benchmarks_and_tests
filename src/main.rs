@@ -51,7 +51,7 @@ pub fn main() {
         &payment_timelock_bytes,
         &secret_hash,
     );
-    let hash_from_slice = Sha256::digest(input_from_slice);
+    let hash_from_slice = Sha256::digest(input_from_slice).to_vec();
 
     // Calculate hash for extend_with_chain
     let input_with_chain = extend_with_chain(
@@ -59,7 +59,7 @@ pub fn main() {
         &payment_timelock_bytes,
         &secret_hash,
     );
-    let hash_with_chain = Sha256::digest(input_with_chain);
+    let hash_with_chain = Sha256::digest(input_with_chain).to_vec();
 
     // Verify both hashes are the same
     assert_eq!(hash_from_slice, hash_with_chain, "Hashes do not match!");
