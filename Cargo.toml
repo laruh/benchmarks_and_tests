@@ -10,6 +10,7 @@ hyper-tls = "0.5.0"
 url = "2.5.0"
 ethabi = { version = "17.0.0" }
 ethereum-types = { version = "0.13", default-features = false, features = ["std", "serialize"] }
+sha2 = "0.10.6"
 
 [dev-dependencies]
 criterion = "0.3"

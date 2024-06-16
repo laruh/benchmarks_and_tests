@@ -1,4 +1,5 @@
 use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
+use sha2::{Digest, Sha256};
 use std::time::Instant;
 use url::Url;
 
@@ -24,7 +25,6 @@ pub fn main() {
         );
     }
     let duration_extend_from_slice = start.elapsed();
-
     println!(
         "Time taken for extend_from_slice: {:?}",
         duration_extend_from_slice
@@ -40,11 +40,29 @@ pub fn main() {
         );
     }
     let duration_extend_with_chain = start.elapsed();
-
     println!(
         "Time taken for extend_with_chain: {:?}",
         duration_extend_with_chain
     );
+
+    // Calculate hash for extend_from_slice
+    let input_from_slice = extend_from_slice(
+        &funding_timelock_bytes,
+        &payment_timelock_bytes,
+        &secret_hash,
+    );
+    let hash_from_slice = Sha256::digest(input_from_slice);
+
+    // Calculate hash for extend_with_chain
+    let input_with_chain = extend_with_chain(
+        &funding_timelock_bytes,
+        &payment_timelock_bytes,
+        &secret_hash,
+    );
+    let hash_with_chain = Sha256::digest(input_with_chain);
+
+    // Verify both hashes are the same
+    assert_eq!(hash_from_slice, hash_with_chain, "Hashes do not match!");
 }
 
 #[allow(dead_code)]
