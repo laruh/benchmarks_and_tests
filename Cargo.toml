@@ -13,3 +13,7 @@ ethereum-types = { version = "0.13", default-features = false, features = ["std"
 
 [dev-dependencies]
 criterion = "0.3"
+
+[[bench]]
+name = "benchmark"
+harness = false
