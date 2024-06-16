@@ -25,6 +25,11 @@ pub fn main() {
     }
     let duration_extend_from_slice = start.elapsed();
 
+    println!(
+        "Time taken for extend_from_slice: {:?}",
+        duration_extend_from_slice
+    );
+
     // Test extend_with_chain
     let start = Instant::now();
     for _ in 0..iterations {
@@ -36,10 +41,6 @@ pub fn main() {
     }
     let duration_extend_with_chain = start.elapsed();
 
-    println!(
-        "Time taken for extend_from_slice: {:?}",
-        duration_extend_from_slice
-    );
     println!(
         "Time taken for extend_with_chain: {:?}",
         duration_extend_with_chain
