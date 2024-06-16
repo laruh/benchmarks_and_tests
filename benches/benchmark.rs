@@ -1,5 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn benchmark(c: &mut Criterion) {
     let funding_timelock_bytes = vec![1; 1000];

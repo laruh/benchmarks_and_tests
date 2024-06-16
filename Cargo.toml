@@ -3,8 +3,6 @@ name = "benchmarks_and_tests"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 bigdecimal = "0.3.0"
 hyper = { version = "0.14.18", default-features = false, features = ["server", "http1", "http2", "tcp", "client"] }

@@ -1,12 +1,11 @@
+use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
 use std::time::Instant;
 use url::Url;
-use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
 
 const MORALIS_API: &str = "api";
 const MORALIS_ENDPOINT_V: &str = "v2";
 const MORALIS_FORMAT_QUERY_NAME: &str = "format";
 const MORALIS_FORMAT_QUERY_VALUE: &str = "decimal";
-
 
 pub fn main() {
     let funding_timelock_bytes = vec![1; 1000];
