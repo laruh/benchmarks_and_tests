@@ -33,6 +33,9 @@ fn main() {
     );
     println!("Address of Box pointer on stack: {:p}", &boxed);
     println!("Address of value in Box on heap: {:p}", &*boxed);
+
+    // let's panic
+    // simulate_stack_overflow();
 }
 
 #[allow(dead_code)]
