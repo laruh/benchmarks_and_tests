@@ -49,7 +49,7 @@ fn recursive_function(depth: usize) {
 
 #[allow(dead_code, unconditional_recursion)]
 fn simulate_stack_overflow() {
-    let large_array = [0u8; 1_000_000]; // Allocate a large array on the stack
+    let large_array = [0u8; 1_000_000]; // Allocates a 1 MB array on the stack
     println!(
         "Simulating stack overflow with array of size: {}",
         large_array.len()
