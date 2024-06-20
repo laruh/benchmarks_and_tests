@@ -1,5 +1,6 @@
 use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
 use sha2::{Digest, Sha256};
+use std::io::Write;
 use std::time::Instant;
 
 pub fn main() {
@@ -12,11 +13,16 @@ pub fn main() {
     // Test extend_from_slice
     let start = Instant::now();
     for _ in 0..iterations {
-        let _res = extend_from_slice(
+        let res = extend_from_slice(
             &funding_timelock_bytes,
             &payment_timelock_bytes,
             &secret_hash,
         );
+        // Write the first element of res to /dev/null
+        // This simulates using the result without keeping it
+        if let Some(first_element) = res.first() {
+            let _ = std::io::sink().write_all(&[*first_element]);
+        }
     }
     let duration_extend_from_slice = start.elapsed();
     println!(
@@ -27,11 +33,16 @@ pub fn main() {
     // Test extend_with_chain
     let start = Instant::now();
     for _ in 0..iterations {
-        let _res = extend_with_chain(
+        let res = extend_with_chain(
             &funding_timelock_bytes,
             &payment_timelock_bytes,
             &secret_hash,
         );
+        // Write the first element of res to /dev/null
+        // This simulates using the result without keeping it
+        if let Some(first_element) = res.first() {
+            let _ = std::io::sink().write_all(&[*first_element]);
+        }
     }
     let duration_extend_with_chain = start.elapsed();
     println!(
