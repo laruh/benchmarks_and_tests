@@ -28,3 +28,13 @@ pub fn extend_with_chain(
     );
     input
 }
+
+struct IterWrap<I>(pub I);
+
+impl<I: Iterator> Iterator for IterWrap<I> {
+    type Item = I::Item;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.0.next()
+    }
+}

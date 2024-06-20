@@ -12,7 +12,7 @@ pub fn main() {
     // Test extend_from_slice
     let start = Instant::now();
     for _ in 0..iterations {
-        let _ = extend_from_slice(
+        let _res = extend_from_slice(
             &funding_timelock_bytes,
             &payment_timelock_bytes,
             &secret_hash,
@@ -27,7 +27,7 @@ pub fn main() {
     // Test extend_with_chain
     let start = Instant::now();
     for _ in 0..iterations {
-        let _ = extend_with_chain(
+        let _res = extend_with_chain(
             &funding_timelock_bytes,
             &payment_timelock_bytes,
             &secret_hash,
