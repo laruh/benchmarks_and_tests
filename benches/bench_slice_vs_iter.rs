@@ -1,7 +1,7 @@
-use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use slice_vs_iter::{extend_from_slice, extend_with_chain};
 
-fn benchmark(c: &mut Criterion) {
+fn bench_slice_vs_iter(c: &mut Criterion) {
     let funding_timelock_bytes = vec![1; 1000];
     let payment_timelock_bytes = vec![2; 1000];
     let secret_hash = vec![3; 1000];
@@ -27,5 +27,5 @@ fn benchmark(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, benchmark);
+criterion_group!(benches, bench_slice_vs_iter);
 criterion_main!(benches);

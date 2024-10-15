@@ -1,9 +1,16 @@
-use benchmarks_and_tests::{extend_from_slice, extend_with_chain};
 use sha2::{Digest, Sha256};
+use slice_vs_iter::{extend_from_slice, extend_with_chain, IterWrap};
 use std::io::Write;
 use std::time::Instant;
 
 pub fn main() {
+    let slice = &[1, 2, 3, 4, 5];
+    let iter = slice.iter();
+    println!("{:?}", iter.size_hint()); // Output: (5, Some(5))
+
+    let wrapped_iter = IterWrap(iter);
+    println!("{:?}", wrapped_iter.size_hint()); // Output: (0, None)
+
     let funding_timelock_bytes = vec![1; 1000];
     let payment_timelock_bytes = vec![2; 1000];
     let secret_hash = vec![3; 1000];
