@@ -5,10 +5,7 @@ fn main() {
         "Boxed array allocated on heap with length: {}",
         boxed_arr.len()
     );
-    println!(
-        "Size of pointer: {} bytes",
-        std::mem::size_of_val(&boxed_arr)
-    );
+    println!("Size of pointer: {} bytes", size_of_val(&boxed_arr));
 
     // Multiple Boxes
     let mut pointers = Vec::with_capacity(1_000_000);
@@ -17,25 +14,18 @@ fn main() {
         let boxed = Box::new(0u64);
         pointers.push(boxed);
     }
-    println!(
-        "Size of pointers: {} bytes",
-        std::mem::size_of_val(&pointers)
-    );
+    println!("Size of pointers: {} bytes", size_of_val(&pointers));
 
     let boxed = Box::new(0u64);
-    println!(
-        "Size of Box pointer: {} bytes",
-        std::mem::size_of_val(&boxed)
-    );
-    println!(
-        "Size of value inside Box: {} bytes",
-        std::mem::size_of_val(&*boxed)
-    );
+    println!("Size of Box pointer: {} bytes", size_of_val(&boxed));
+    println!("Size of value inside Box: {} bytes", size_of_val(&*boxed));
     println!("Address of Box pointer on stack: {:p}", &boxed);
     println!("Address of value in Box on heap: {:p}", &*boxed);
 
     // let's panic
     // simulate_stack_overflow();
+
+    println!("End process");
 }
 
 #[allow(dead_code)]
