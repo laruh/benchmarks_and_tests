@@ -1,31 +1,49 @@
+use std::mem::size_of_val;
+
 fn main() {
-    // Single Box
+    // Single Box of array
     let boxed_arr = Box::new([0u64; 1_000_000_000]); // Allocates 8 GB on the heap
     println!(
-        "Boxed array allocated on heap with length: {}",
-        boxed_arr.len()
+        "----- Boxed Array -----\n\
+        Length of boxed array: {}\n\
+        Size of the pointer to the boxed array: {} bytes",
+        boxed_arr.len(),
+        size_of_val(&boxed_arr)
     );
-    println!("Size of pointer: {} bytes", size_of_val(&boxed_arr));
 
-    // Multiple Boxes
+    // Multiple Boxes in Vector
     let mut pointers = Vec::with_capacity(1_000_000);
     for _ in 0..1_000_000 {
-        // Each box call allocates memory on the heap to store u64
+        // Each Box call allocates memory on the heap to store a single u64
         let boxed = Box::new(0u64);
         pointers.push(boxed);
     }
-    println!("Size of pointers: {} bytes", size_of_val(&pointers));
+    println!(
+        "\n----- Vector of Boxes -----\n\
+        Total number of pointers in vector: {}\n\
+        Total size of pointer vector: {} bytes",
+        pointers.len(),
+        size_of_val(&pointers)
+    );
 
+    // Single Box of u64
     let boxed = Box::new(0u64);
-    println!("Size of Box pointer: {} bytes", size_of_val(&boxed));
-    println!("Size of value inside Box: {} bytes", size_of_val(&*boxed));
-    println!("Address of Box pointer on stack: {:p}", &boxed);
-    println!("Address of value in Box on heap: {:p}", &*boxed);
+    println!(
+        "\n----- Single Box -----\n\
+        Size of a single Box pointer: {} bytes\n\
+        Size of the value inside the Box: {} bytes\n\
+        Address of the Box pointer on the stack: {:p}\n\
+        Address of the value in the Box on the heap: {:p}",
+        size_of_val(&boxed),
+        size_of_val(&*boxed),
+        &boxed,
+        &*boxed
+    );
 
-    // let's panic
+    // Uncomment to simulate a stack overflow
     // simulate_stack_overflow();
 
-    println!("End process");
+    println!("\nProcess completed.");
 }
 
 #[allow(dead_code)]
