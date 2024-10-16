@@ -13,6 +13,32 @@ pub fn extend_from_slice(
     input
 }
 
+/// Extends a vector using an iterator chain.
+pub fn extend_with_chain(
+    funding_timelock_bytes: &[u8],
+    payment_timelock_bytes: &[u8],
+    secret_hash: &[u8],
+) -> Vec<u8> {
+    let mut input = Vec::with_capacity(
+        funding_timelock_bytes.len() + payment_timelock_bytes.len() + secret_hash.len(),
+    );
+    // input.extend(IterWrap(
+    //     funding_timelock_bytes
+    //         .iter()
+    //         .chain(payment_timelock_bytes.iter())
+    //         .chain(secret_hash.iter()),
+    // ));
+
+    input.extend(
+        funding_timelock_bytes
+            .iter()
+            .chain(payment_timelock_bytes.iter())
+            .chain(secret_hash.iter()),
+    );
+
+    input
+}
+
 pub fn extend_with_iterwrap(
     funding_timelock_bytes: &[u8],
     payment_timelock_bytes: &[u8],
@@ -32,24 +58,6 @@ pub fn extend_with_iterwrap(
     input.extend(payment_iter);
     input.extend(secret_iter);
 
-    input
-}
-
-/// Extends a vector using an iterator chain.
-pub fn extend_with_chain(
-    funding_timelock_bytes: &[u8],
-    payment_timelock_bytes: &[u8],
-    secret_hash: &[u8],
-) -> Vec<u8> {
-    let mut input = Vec::with_capacity(
-        funding_timelock_bytes.len() + payment_timelock_bytes.len() + secret_hash.len(),
-    );
-    input.extend(IterWrap(
-        funding_timelock_bytes
-            .iter()
-            .chain(payment_timelock_bytes.iter())
-            .chain(secret_hash.iter()),
-    ));
     input
 }
 
