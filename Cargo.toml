@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "return_impl_trait",
     "sof_mem_allocation",
     "slice_vs_iter",
 ]
