@@ -425,6 +425,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "same_memory_references"
+version = "0.1.0"
+
+[[package]]
 name = "serde"
 version = "1.0.210"
 source = "registry+https://github.com/rust-lang/crates.io-index"
