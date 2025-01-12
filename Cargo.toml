@@ -3,5 +3,5 @@ members = [
     "return_impl_trait",
     "sof_mem_allocation",
     "slice_vs_iter",
-    "same_memory_references",
+    "same_memory_references", "ub_examples", "incompatible_types",
 ]
