@@ -3,9 +3,20 @@ use std::mem::size_of_val;
 
 fn main() {
     // Разименование нулевого указателя
+    // unsafe {
+    //     let null_ptr: *const i32 = std::ptr::null();
+    //     println!("{:?}", *null_ptr); // Process finished with exit code 139 (interrupted by signal 11:SIGSEGV)
+    // }
+
+    // Висячий указатель
     unsafe {
-        let null_ptr: *const i32 = std::ptr::null();
-        println!("{:?}", *null_ptr); // Process finished with exit code 139 (interrupted by signal 11:SIGSEGV)
+        let dangling_ptr: *const i32;
+        {
+            let value = 42;
+            dangling_ptr = &value;
+        } // `value` goes out of scope here
+          // Здесь `dangling_ptr` указывает на освобожденную память
+        println!("{:?}", *dangling_ptr); // Ошибка: неопределенное поведение
     }
 
     // Нарушение инвариантов типов
