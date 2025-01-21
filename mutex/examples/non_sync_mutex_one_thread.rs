@@ -1,9 +1,12 @@
 use std::sync::Mutex;
 use std::thread;
 
+mod rc_in_mutex;
+mod share_non_sync_mutex;
+
 struct NotSync; // Тип, который не безопасен для одновременного доступа.
 
-pub(crate) fn run() {
+fn main() {
     unsafe impl Send for NotSync {} // Мы гарантируем, что его можно передавать между потоками.
 
     let data = Mutex::new(NotSync); // Это работает, так как `T: Send`.

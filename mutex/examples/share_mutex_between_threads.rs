@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 use std::thread;
 
-pub(crate) fn run() {
+fn main() {
     let mutex = Arc::new(Mutex::new(42));
 
     //If you pass the original Arc directly into a thread (without calling Arc::clone),
