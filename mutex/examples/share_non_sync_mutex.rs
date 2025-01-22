@@ -1,7 +1,9 @@
 #[allow(dead_code)]
 fn main() {
     println!("This example won't compile because the Mutex<T> is moved into the first thread, leaving it unavailable for the second thread.");
-    println!("(To fix this, wrap the Mutex<T> in an Arc<T> to allow shared ownership between threads.)");
+    println!(
+        "(To fix this, wrap the Mutex<T> in an Arc<T> to allow shared ownership between threads.)"
+    );
 
     // use std::sync::Mutex;
     // use std::thread;
