@@ -1,13 +1,10 @@
-[package]
-name = "benchmarks_and_tests"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-
-[dev-dependencies]
-criterion = "0.5.1"
-
-[[bench]]
-name = "benchmark"
-harness = false
+[workspace]
+members = [
+    "return_impl_trait",
+    "sof_mem_allocation",
+    "slice_vs_iter",
+    "same_memory_references",
+    "ub_examples",
+    "incompatible_types",
+    "mutex",
+]

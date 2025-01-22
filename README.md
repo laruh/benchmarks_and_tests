@@ -1,23 +1,23 @@
-# Benchmarks and Tests
+# Project Cleanliness Commands
 
-This project is used for benchmarking and testing various Rust features and implementations.
+Use the following `cargo` commands to keep the project clean and well-maintained:
 
-## Running Benchmarks
+### Code Formatting
 
-To get benchmark results, run the following command:
-
-```bash
-cargo bench
-```
-
-## Run application
-
-Execute the following commands:
+Format the entire codebase with:
 
 ```bash
-cargo build --release
+cargo fmt
 ```
 
+### Linting
+
+Run Clippy with strict settings to catch issues:
+
 ```bash
-./target/release/benchmarks_and_tests
+cargo clippy --workspace --all-targets -- -D warnings
 ```
+
+- **`--workspace`**: Lints all workspace crates.
+- **`--all-targets`**: Lints library, binary, test, and benchmark targets.
+- **`-D warnings`**: Treats all warnings as errors.

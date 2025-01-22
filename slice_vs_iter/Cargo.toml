@@ -1,0 +1,15 @@
+[package]
+name = "slice_vs_iter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sha2 = "0.10.6"
+
+[dev-dependencies]
+criterion = "0.5.1"
+
+[[bench]]
+name = "bench_slice_vs_iter"
+path = "../benches/bench_slice_vs_iter.rs"
+harness = false
