@@ -6,5 +6,5 @@ members = [
     "same_memory_references",
     "ub_examples",
     "incompatible_types",
-    "mutex",
+    "mutex", "alloy", "serde_example",
 ]
